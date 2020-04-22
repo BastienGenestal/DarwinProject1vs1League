@@ -1,0 +1,19 @@
+.leaderboard-page {
+    margin-top: 50px !important;
+    position: inherit !important;
+}
+
+.leaderboard-title {
+    margin: auto;
+    font-weight: 500;
+    background: transparent;
+    color: white;
+    padding: 1rem;
+}
+
+.module-border-wrap {
+    margin: auto;
+    position: relative;
+    background: linear-gradient(85deg, #45c6f9, #3143a2 75%);
+    padding: 3px;
+}

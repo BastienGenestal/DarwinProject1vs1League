@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
-import LoginReducer from './LoginReducer'
+import {LeaderboardReducer,LeaderboardIsLoadingReducer} from './LeaderboardReducer'
 
 const rootReducer = combineReducers({
-    Login: LoginReducer
+    Leaderboard: LeaderboardReducer,
+    LeaderboardIsLoading: LeaderboardIsLoadingReducer
 })
 
 export default rootReducer;

@@ -1,0 +1,15 @@
+.profile_col {
+    text-align: left;
+    display: table-cell;
+    height: 100%;
+    margin: auto;
+    font-weight: 600;
+    padding-left: 100px;
+}
+
+.player_avatar {
+    margin: 4px 10px 4px 0;
+    border-radius:30px;
+    width:50px;
+    height:50px;
+}

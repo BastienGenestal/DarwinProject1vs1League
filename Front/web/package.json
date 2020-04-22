@@ -15,7 +15,11 @@
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.0",
-    "redux": "^4.0.4"
+    "react-table": "^7.0.4",
+    "react-table-v6": "^6.8.6",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/runtime": "^7.6.3"
+    "@babel/runtime": "^7.6.3",
+    "namor": "^2.0.2"
   }
 }

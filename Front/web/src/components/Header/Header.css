@@ -19,3 +19,12 @@
     padding: 10px;
     text-shadow: #231ee0 2px 2px;
 }
+
+.leaderboard-tab {
+    margin-left: 10px;
+    padding-left: 20px !important;
+    font-weight: 400;
+    height: 90%;
+    font-size: 20px;
+    border-left: rgba(93, 228, 255, 0.75) 1px solid;
+}
