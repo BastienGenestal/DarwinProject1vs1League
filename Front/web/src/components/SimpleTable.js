@@ -23,7 +23,17 @@ function sansAccent(chaine) {
     return str;
 }
 
-function filterCaseInsensitive(filter, row) {
+function filterCaseInsensitive(filter, allrow) {
+    let row = allrow
+    if (filter.id === "name" && row.name.props) {
+        row = row.name.props.children[1]
+        return (row ? String(sansAccent(row.toLowerCase())).includes(sansAccent(filter.value.toLowerCase())) : true);
+    }
+    if (filter.id === "ranking" && row.ranking.props) {
+        row = row.ranking.props.children[1].props.children
+        console.log(row, filter)
+        return (row.toString() === filter.value);
+    }
     const id = filter.pivotId || filter.id;
     if (row[id] === undefined || row[id] === null) return false
     const strValue = row[id].toString()
@@ -100,21 +110,21 @@ class SimpleTable extends Component {
         let page = 0
         if (localStorage.getItem("page")) page = localStorage.getItem("page")
 
-        return (<div>
+        return (
                 <ReactTable
+                    className="-striped -highlight"
                     onSortedChange={this.onChangeSort}
                     onPageChange={this.onChangePage}
+                    defaultFilterMethod={(filter, row) => filterCaseInsensitive(filter, row)}
                     sorted={sorted}
                     page={parseInt(page, 10)}
-                    NoDataComponent={() => null}
                     minRows={1}
+                    multiSort={false}
                     columns={columns}
+                    noDataText={"Player not in database"}
                     {...others}
-                    resolvedData={data}
-                    data ={data}
+                    data={data}
                 />
-                <br />
-            </div>
         );
     }
 

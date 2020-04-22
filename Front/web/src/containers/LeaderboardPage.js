@@ -11,9 +11,9 @@ class LeaderboardPage extends React.Component {
                 <Header/>
                 <div className="leaderboard-page">
                     <div className="module-border-wrap">
-                        <h2 className="leaderboard-title">
+                        <span className="leaderboard-title">
                             Leaderboard
-                        </h2>
+                        </span>
                     </div>
                     <div className="leaderboard_container">
                         <LeaderBoardTable/>

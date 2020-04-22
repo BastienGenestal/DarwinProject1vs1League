@@ -7,6 +7,22 @@
     padding-left: 100px;
 }
 
+.container_medal {
+    position: relative;
+    text-align: center;
+}
+
+.centered {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    font-size: 25px;
+    color: white;
+    -webkit-text-stroke: 1px #393939;
+}
+
 .player_avatar {
     margin: 4px 10px 4px 0;
     border-radius:30px;
