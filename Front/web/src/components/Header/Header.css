@@ -1,0 +1,30 @@
+.discordButtonContent {
+    padding: 10px 20px 10px 20px;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: rgba(0,0,0,0.45) !important;
+}
+
+@font-face{
+    font-family:"Prime Minister of Canada W05 R";
+    src:url("../../../src/data/Fonts/canada/canada.woff2") format("woff2"),
+        url("../../../src/data/Fonts/canada/canada.woff") format("woff");
+}
+
+.intro-text {
+    font-family: 'Prime Minister of Canada W05 R', Fallback, sans-serif !important;
+    font-size: 60px;
+    padding: 10px;
+    text-shadow: #231ee0 2px 2px;
+}
+
+.leaderboard-tab {
+    margin-left: 10px;
+    padding-left: 20px !important;
+    font-weight: 400;
+    height: 90%;
+    font-size: 20px;
+    border-left: rgba(93, 228, 255, 0.75) 1px solid;
+}
