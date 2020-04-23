@@ -6,6 +6,7 @@ ServerId = realServerId
 
 UsefulChannelNames = {
     ("chal", "challenge-zone"),
+    ("feed", "feed"),
     ("1", "room-1"),
     ("2", "room-2"),
     ("3", "room-3"),
@@ -19,13 +20,23 @@ UsefulRoles = {
 }
 
 RankRoles = {
-    ("Godlike", "Godlike"),
-    ("Master", "Master"),
-    ("Pro", "Pro"),
-    ("Expert", "Expert"),
-    ("Player", "Player"),
-    ("Newbie", "Newbie"),
-    ("Medkit", "Newbie")
+    ("Godlike", "Godlike", 5000),
+    ("Master", "Master", 2500),
+    ("Pro", "Pro", 1500),
+    ("Expert", "Expert", 1000),
+    ("Player", "Player", 500),
+    ("Newbie", "Newbie", 100),
+    ("Medkit", "Medkit", 0)
+}
+
+rolesValues = {
+    ("Godlike", 5000),
+    ("Master", 2500),
+    ("Pro", 1500),
+    ("Expert", 1000),
+    ("Player", 500),
+    ("Newbie", 100),
+    ("Medkit", 0)
 }
 
 BracketRoles = {
@@ -44,6 +55,12 @@ UsefulBasicEmotes = {
     ("win", "🎖️"),
     ("yes", "✅"),
     ("no", "❎")
+}
+
+### Cogs
+
+UsefulCogs = {
+    ("DB", "DBCog")
 }
 
 ### Const IDs

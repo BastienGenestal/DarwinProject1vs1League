@@ -1,8 +1,8 @@
 from random import random
-
 from discord.ext import commands
 from mysql_params import *
 from const import INIT_ELO
+from Ranks import set_rank
 import pymysql.cursors
 
 
@@ -26,10 +26,20 @@ class DBCog(commands.Cog):
         except Exception as e:
             print(e)
 
+    def update_elo(self, user_id, new_elo):
+        try:
+            with self.db.cursor() as cursor:
+                sql = "UPDATE `players` SET `elo` = %s WHERE `user_id`=%s"
+                cursor.execute(sql, (new_elo, user_id))
+                self.db.commit()
+        except Exception as e:
+            print("Error Updating user elo:", e)
+        return None
+
     def get_user(self, user_id):
         try:
             with self.db.cursor() as cursor:
-                sql = "SELECT `id` FROM `players` WHERE `user_id`=%s"
+                sql = "SELECT `*` FROM `players` WHERE `user_id`=%s"
                 cursor.execute(sql, (user_id,))
                 result = cursor.fetchone()
                 if not result:
@@ -41,28 +51,29 @@ class DBCog(commands.Cog):
         return None
 
     def add_user_to_db(self, member):
-        if self.get_user(member.id):
-            return -1
         try:
             with self.db.cursor() as cursor:
                 sql = "INSERT INTO `players` (`user_id`, `user_name`, `first_seen`, `avatar_url`, `elo`)" +\
                     " VALUES (%s, %s, %s, %s, %s)"
                 cursor.execute(sql, (member.id, member.name, member.joined_at, str(member.avatar_url), INIT_ELO + random()*10))
             self.db.commit()
-            print("Added used: ", member.name)
+            print("Added user: ", member.name)
+            return
         except Exception as e:
             print("Error adding user:", e)
-            exit(0)
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
         print("{} Joined the server !".format(member.name))
-        if self.add_user_to_db(member) != -1:
+        user = self.get_user(member.id)
+        if not user:
+            self.add_user_to_db(member)
             print("Added {} to the Database".format(member.name))
+        await set_rank(self.client, member, user['elo'])
 
     def add_all_user_to_db(self):
         for member in self.client.get_all_members():
-            if not member.bot:
+            if not member.bot and not self.get_user(member.id):
                 self.add_user_to_db(member)
 
 

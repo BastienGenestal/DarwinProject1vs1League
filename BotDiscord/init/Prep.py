@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from const import UsefulChannelNames, UsefulRoles, RankRoles, UsefulCustomEmotes, UsefulBasicEmotes, ServerId, BracketRoles
+from const import *
 
 
 class Prep(commands.Cog):
@@ -28,7 +28,7 @@ class Prep(commands.Cog):
             self.client.usefulRoles[var] = role
 
     async def init_rank_roles(self):
-        for (var, roleName) in RankRoles:
+        for (var, roleName, elo) in RankRoles:
             role = discord.utils.get(self.client.server.roles, name=roleName)
             if not role:
                 raise self.client.MissingSomething("{} role is missing".format(roleName))
@@ -51,6 +51,7 @@ class Prep(commands.Cog):
     async def init_basic_emotes(self):
         for (var, emote) in UsefulBasicEmotes:
             self.client.usefulBasicEmotes[var] = emote
+
 
     @commands.Cog.listener()
     async def on_ready(self):

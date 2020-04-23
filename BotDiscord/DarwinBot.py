@@ -17,8 +17,9 @@ class DarwinBot(commands.Bot):
         self.BracketRoles = {}
         self.usefulCustomEmotes = {}
         self.usefulBasicEmotes = {}
+        self.usefulCogs = {}
         self.DuelRequests = []
-        self.Sets = []
+        self.Rooms = []
 
         # Non - constant variable initialization
 
@@ -33,6 +34,9 @@ class DarwinBot(commands.Bot):
         for filename in os.listdir('./cogs'):
             if filename.endswith('.py'):
                 self.load_extension('cogs.{}'.format(filename[:-3]))
+
+        for (var, cog) in UsefulCogs:
+            self.usefulCogs[var] = self.get_cog(cog)
 
     class MissingSomething(Exception):
         def __init__(self, *args):
