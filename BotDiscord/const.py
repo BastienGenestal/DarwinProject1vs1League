@@ -29,7 +29,7 @@ RankRoles = {
     ("Medkit", "Medkit", 0)
 }
 
-rolesValues = {
+rolesValues = [
     ("Godlike", 1500),
     ("Master", 750),
     ("Pro", 600),
@@ -37,7 +37,7 @@ rolesValues = {
     ("Player", 500),
     ("Newbie", 250),
     ("Medkit", 0)
-}
+]
 
 BracketRoles = {
     ("1", "Room 1"),
