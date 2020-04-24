@@ -13,10 +13,11 @@ def get_rank(client, player):
 
 def get_new_rank(player_elo):
     print(type(rolesValues), rolesValues)
-    for rank, elo in rolesValues.sort(key=lambda x:x[1]):
-        print(player_elo, elo, rank)
+    actual_rank = 'Godlike'
+    for rank, elo in rolesValues:
         if player_elo <= elo:
-            return rank
+            return actual_rank
+        actual_rank = rank
 
 async def set_rank(client, player, player_elo_str):
     player_elo = int(player_elo_str)
