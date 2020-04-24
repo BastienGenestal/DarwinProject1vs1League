@@ -25,7 +25,11 @@ class ChallengeCog(commands.Cog):
 
     def is_it_more_than_x_minutes(self, request_time):
         difference = datetime.now() - request_time
-        return difference.minute > 5
+        seconds_in_day = 24 * 60 * 60
+        datetime.timedelta(0, 8, 562000)
+        diff_in_minutes = divmod(difference.days * seconds_in_day + difference.seconds, 60)
+        print(diff_in_minutes, diff_in_minutes[0])
+        return diff_in_minutes[0] > 5
 
     async def chall_same_player(self, message):
         for request in self.client.DuelRequests:
