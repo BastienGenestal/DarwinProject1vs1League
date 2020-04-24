@@ -33,20 +33,10 @@ class LeaderBoardTable extends React.Component {
         </span>
     }
 
-    /*display_elo(player) {
-        return (
-            <div className="elo_col">
-                <img src={} alt="medal"/>
-                {player.elo}
-            </div>
-        )
-    }*/
-
     render() {
-        const { Leaderboard, LeaderboardIsLoading }= this.props
+        const { Leaderboard, LeaderboardIsLoading } = this.props
 
         if (LeaderboardIsLoading) return loaders[Math.floor(Math.random() * loaders.length)]
-        console.log(Leaderboard)
         return (<SimpleTable
             name="leaderboard_table"
             filterable

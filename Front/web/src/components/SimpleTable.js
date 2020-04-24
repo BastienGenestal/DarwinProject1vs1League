@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactTable from "react-table-v6";
 import 'react-table-v6/react-table.css'
-import moment from 'moment';
 
 function sansAccent(chaine) {
     const accent = [
@@ -42,57 +41,14 @@ function filterCaseInsensitive(filter, allrow) {
 
 class SimpleTable extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            columns: this.props.columns
-        }
-    }
-
-    // ────────────────────────────────────────────────────────────────────────────────
-    // ─── SYSTEM ─────────────────────────────────────────────────────────────────────
-    // ────────────────────────────────────────────────────────────────────────────────
-
-    componentDidUpdate(prevProps, prevState) {
-        if (this.props.columns !== prevProps.columns) {
-            this.formatColumns()
-        }
-    }
-
-    // ────────────────────────────────────────────────────────────────────────────────
-    // ─── FUNCTION ───────────────────────────────────────────────────────────────────
-    // ────────────────────────────────────────────────────────────────────────────────
-
-    formatColumns = () => {
-        const columns = this.props.columns
-        let nwStateCol = []
-        let temp = {}
-        columns.forEach((column, index) => {
-            temp = column
-            if (temp.type === 'date') {
-                temp.id = temp.accessor
-                const propertyName = temp.accessor
-                temp.accessor = d => { return (!d[propertyName] || !moment(d[propertyName]).isValid()) ? '' : moment(d[propertyName]).format("DD/MM/YYYY")}
-            }
-            nwStateCol.push(temp)
-        })
-        this.setState({ columns: nwStateCol })
-    }
-
-    // ────────────────────────────────────────────────────────────────────────────────
-    // ─── EVENT ──────────────────────────────────────────────────────────────────────
-    // ────────────────────────────────────────────────────────────────────────────────
     onChangeSort = (e) => {
-        //console.log("onChangeSort", e);
-        // on enregistre en local le classement sous le nom du tableau
         localStorage.setItem("sorted", JSON.stringify(e))
-        this.setState({ update: moment() }) // juste pour actualiser
+        this.forceUpdate()
     }
 
     onChangePage = (e) => {
-        //console.log("onChangePage", e);
         localStorage.setItem("page", e)
-        this.setState({ update: moment() }) // juste pour actualiser
+        this.forceUpdate()
     }
 
     // ────────────────────────────────────────────────────────────────────────────────
