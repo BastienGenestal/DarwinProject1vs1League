@@ -29,7 +29,7 @@ class ChallengeCog(commands.Cog):
 
     async def chall_same_player(self, message):
         for request in self.client.DuelRequests:
-            if request['req'].attacker.id == message.author.id and request['req'].defender.id == message.mentions[0].id and not self.is_it_more_than_two_minutes(request['time']):
+            if request['req'].attacker.id == message.author.id and request['req'].defender.id == message.mentions[0].id and not self.is_it_more_than_x_minutes(request['time']):
                 await message.author.send(content=CHALLENGE_SAME_PLAYER_MESSAGE)
                 await message.delete()
                 return True
