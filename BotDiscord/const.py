@@ -26,7 +26,7 @@ RankRoles = {
     ("Expert", "Expert", 550),
     ("Player", "Player", 500),
     ("Newbie", "Newbie", 250),
-    ("Medkit", "Medkit", 0)
+    ("Medkit", "Medkit", 100)
 }
 
 rolesValues = [
@@ -36,7 +36,7 @@ rolesValues = [
     ("Expert", 550),
     ("Player", 500),
     ("Newbie", 250),
-    ("Medkit", 0)
+    ("Medkit", 100)
 ]
 
 BracketRoles = {
