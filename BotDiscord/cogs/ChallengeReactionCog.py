@@ -41,8 +41,8 @@ class ChallengeReaction(commands.Cog):
             print('NO VALID REQUEST FOUND')
             return
         if react.emoji == self.client.usefulBasicEmotes['yes']:
-            new_room = Room(request.message, request.attacker, request.defender)
-            await new_room.create(self.client)
+            new_room = Room(request.message, request.attacker, request.defender, self.client)
+            await new_room.create()
             self.client.Rooms.append(new_room)
             self.client.DuelRequests.remove(request)
 

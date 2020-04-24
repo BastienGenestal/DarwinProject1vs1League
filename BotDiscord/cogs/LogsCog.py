@@ -11,7 +11,7 @@ class LogsCog(commands.Cog):
             wasAttributed = self.client.RankRoles[role] in before.roles
             isAttributed = self.client.RankRoles[role] in after.roles
             if not wasAttributed and isAttributed:
-                await self.client.usefulChannels['feed'].send('{} is now {}.'.format(after.name, self.client.RankRoles[role].name))
+                await self.client.usefulChannels['feed'].send('```{} is now {}.```'.format(after.name, self.client.RankRoles[role].name))
                 return
 
 

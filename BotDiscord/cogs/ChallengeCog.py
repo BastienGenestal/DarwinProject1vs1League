@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from const_messages import DUEL_REQUEST_MSG
+from const_messages import DUEL_REQUEST_MSG, CHALLENGE_SAME_PLAYER_MESSAGE, CHALLENGE_YOURSELF_MESSAGE
 from Request import Request
 
 
@@ -21,6 +21,19 @@ class ChallengeCog(commands.Cog):
         await botMsg.add_reaction(self.client.usefulBasicEmotes['yes'])
         self.client.DuelRequests.append(Request(botMsg, author, mention))
 
+    async def chall_same_player(self, message):
+        for request in self.client.DuelRequests:
+            if request.attacker.id == message.author.id and request.defender.id == message.mentions[0].id:
+                await message.author.send(content=CHALLENGE_SAME_PLAYER_MESSAGE)
+                await message.delete()
+                return True
+        return False
+
+    @staticmethod
+    async def chall_yourself(message):
+        await message.author.send(content=CHALLENGE_YOURSELF_MESSAGE)
+        await message.delete()
+
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.author.bot:
@@ -29,7 +42,10 @@ class ChallengeCog(commands.Cog):
             if not message.mentions or len(message.mentions) != 1:
                 await message.delete()
                 return
-            # if you already challenged that person, return
+            if message.mentions[0].id == message.author.id:
+                return await self.chall_yourself(message)
+            if await self.chall_same_player(message):
+                return
             await self.challenge(message)
 
 

@@ -1,3 +1,6 @@
+import asyncio
+import inspect
+
 import discord
 from discord.ext import commands
 
@@ -22,25 +25,15 @@ class ResultReaction(commands.Cog):
             return False
         return found_set
 
-    def get_set_game_from_messgae(self, room, react):
-        for idx, msg in enumerate(room.result_msgs):
-            if react.message.id == msg.id:
-                return idx + 1
-        return None
-
     @commands.Cog.listener()
     async def on_reaction_add(self, react, user):
         room = self.is_it_a_result_msg(react, user)
         if not room:
             return
-        game = self.get_set_game_from_messgae(room, react)
-        if not game:
-            print('Can not find the game for this message.')
-            return
         victory = 0
         if react.emoji == self.client.usefulBasicEmotes['win']:
             victory = 1
-        should_end = await room.enter_score(self.client, game, user, victory)
+        should_end = await room.enter_score(user, victory)
         if should_end:
             self.client.Rooms.remove(room)
 

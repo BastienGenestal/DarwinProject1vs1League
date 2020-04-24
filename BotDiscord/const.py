@@ -35,7 +35,7 @@ rolesValues = {
     ("Pro", 1500),
     ("Expert", 1000),
     ("Player", 500),
-    ("Newbie", 100),
+    ("Newbie", 250),
     ("Medkit", 0)
 }
 
