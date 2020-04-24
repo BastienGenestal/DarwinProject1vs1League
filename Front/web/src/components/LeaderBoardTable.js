@@ -37,6 +37,8 @@ class LeaderBoardTable extends React.Component {
         const { Leaderboard, LeaderboardIsLoading } = this.props
 
         if (LeaderboardIsLoading) return loaders[Math.floor(Math.random() * loaders.length)]
+        if (Leaderboard === -1)
+            return <div>Seems like server is dead lul</div>
         return (<SimpleTable
             name="leaderboard_table"
             filterable
