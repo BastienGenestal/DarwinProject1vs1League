@@ -13,6 +13,7 @@ def get_rank(client, player):
 
 def get_new_rank(player_elo):
     for rank, elo in rolesValues:
+        print(player_elo, elo, rank)
         if player_elo >= elo:
             return rank
 
