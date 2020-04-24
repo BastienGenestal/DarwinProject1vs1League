@@ -15,8 +15,9 @@ def get_new_rank(player_elo):
     actual_rank = 'Godlike'
     for rank, elo in rolesValues:
         if player_elo <= elo:
+            actual_rank = rank
+        else:
             return actual_rank
-        actual_rank = rank
 
 async def set_rank(client, player, player_elo_str):
     player_elo = int(player_elo_str)
