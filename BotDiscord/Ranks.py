@@ -18,10 +18,10 @@ def get_new_rank(player_elo):
 
 async def set_rank(client, player, player_elo_str):
     player_elo = int(player_elo_str)
-    print(player_elo, player_elo_str)
     new_rank = get_new_rank(player_elo)
     current_rank = get_rank(client, player)
     if current_rank == new_rank:
         return
+    print(current_rank)
     await clear_rank(client, player)
     await player.add_roles(client.RankRoles[new_rank])
