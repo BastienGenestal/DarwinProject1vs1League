@@ -54,8 +54,8 @@ class ChallengeCog(commands.Cog):
                 return
             if message.mentions[0].id == message.author.id:
                 return await self.chall_yourself(message)
-            if await self.chall_same_player(message):
-                return
+            #if await self.chall_same_player(message):
+            #    return
             await self.challenge(message)
 
 

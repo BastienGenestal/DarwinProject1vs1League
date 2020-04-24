@@ -11,10 +11,8 @@ class ChallengeReaction(commands.Cog):
         if user.bot:
             return False
         if msg.id != req['req'].message.id:
-            print("msg", msg.id, req['req'].message.id)
             return False
         if user.id != req['req'].defender.id:
-            print("defender", user.id, req['req'].defender.id)
             return False
         return True
 

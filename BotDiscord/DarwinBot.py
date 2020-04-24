@@ -19,7 +19,6 @@ class DarwinBot(commands.Bot):
         self.usefulBasicEmotes = {}
         self.usefulCogs = {}
         self.DuelRequests = []
-        self.remove_request_task = []
         self.Rooms = []
 
         # Non - constant variable initialization
