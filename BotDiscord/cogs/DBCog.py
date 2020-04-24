@@ -68,7 +68,9 @@ class DBCog(commands.Cog):
         if not user:
             self.add_user_to_db(member)
             print("Added {} to the Database".format(member.name))
-        await set_rank(self.client, member, user['elo'])
+            await user.add_roles(self.client.RankRoles['Player'])
+        else:
+            await set_rank(self.client, member, user['elo'])
 
     def add_all_user_to_db(self):
         for member in self.client.get_all_members():
