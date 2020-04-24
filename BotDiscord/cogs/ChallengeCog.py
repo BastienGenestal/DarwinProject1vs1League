@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from const_messages import DUEL_REQUEST_MSG, CHALLENGE_SAME_PLAYER_MESSAGE, CHALLENGE_YOURSELF_MESSAGE
 from Request import Request
+from datetime import datetime
 
 
 class ChallengeCog(commands.Cog):
@@ -19,11 +20,16 @@ class ChallengeCog(commands.Cog):
         e.set_author(name=author, icon_url=author.avatar_url)
         botMsg = await channel.send(embed=e, delete_after=60 * 2)
         await botMsg.add_reaction(self.client.usefulBasicEmotes['yes'])
-        self.client.DuelRequests.append(Request(botMsg, author, mention))
+        req = Request(botMsg, author, mention)
+        self.client.DuelRequests.append({'req': req, 'time': datetime.now()})
+
+    def is_it_more_than_x_minutes(self, request_time):
+        difference = datetime.now() - request_time
+        return difference.minute > 5
 
     async def chall_same_player(self, message):
         for request in self.client.DuelRequests:
-            if request.attacker.id == message.author.id and request.defender.id == message.mentions[0].id:
+            if request['req'].attacker.id == message.author.id and request['req'].defender.id == message.mentions[0].id and not self.is_it_more_than_two_minutes(request['time']):
                 await message.author.send(content=CHALLENGE_SAME_PLAYER_MESSAGE)
                 await message.delete()
                 return True

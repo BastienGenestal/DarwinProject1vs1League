@@ -46,7 +46,6 @@ class Room:
         winner = None
         msg = ''
         if self.task:
-            print('Task cancel')
             self.task.cancel()
         if self.result_reactions['d'] == self.result_reactions['a']:
             msg = CONFLICT_MSG
