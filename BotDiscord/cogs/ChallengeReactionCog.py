@@ -10,11 +10,11 @@ class ChallengeReaction(commands.Cog):
     def is_it_this_request(req, msg, user):
         if user.bot:
             return False
-        if msg.id != req.message.id:
-            print("msg", msg.id, req.message.id)
+        if msg.id != req['req'].message.id:
+            print("msg", msg.id, req['req'].message.id)
             return False
-        if user.id != req.defender.id:
-            print("defender", user.id, req.defender.id)
+        if user.id != req['req'].defender.id:
+            print("defender", user.id, req['req'].defender.id)
             return False
         return True
 
