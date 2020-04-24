@@ -1,4 +1,3 @@
-from random import random
 from discord.ext import commands
 from mysql_params import *
 from const import INIT_ELO
@@ -55,7 +54,7 @@ class DBCog(commands.Cog):
             with self.db.cursor() as cursor:
                 sql = "INSERT INTO `players` (`user_id`, `user_name`, `first_seen`, `avatar_url`, `elo`)" +\
                     " VALUES (%s, %s, %s, %s, %s)"
-                cursor.execute(sql, (member.id, member.name, member.joined_at, str(member.avatar_url), INIT_ELO + random()*10))
+                cursor.execute(sql, (member.id, member.name, member.joined_at, str(member.avatar_url), INIT_ELO))
             self.db.commit()
             print("Added user: ", member.name)
             return
