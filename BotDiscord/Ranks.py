@@ -11,10 +11,12 @@ def get_rank(client, player):
         if client.RankRoles[role] in player.roles:
             return client.RankRoles[role]
 
+
 def get_new_rank(player_elo):
     for rank, elo in rolesValues:
         if player_elo >= elo:
             return rank
+
 
 async def set_rank(client, player, player_elo_str):
     player_elo = int(player_elo_str)
