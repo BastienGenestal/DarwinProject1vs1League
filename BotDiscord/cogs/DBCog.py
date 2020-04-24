@@ -57,7 +57,7 @@ class DBCog(commands.Cog):
                 cursor.execute(sql, (member.id, member.name, member.joined_at, str(member.avatar_url), INIT_ELO))
             self.db.commit()
             print("Added user: ", member.name)
-            return
+            return self.get_user(member.id)
         except Exception as e:
             print("Error adding user:", e)
 
@@ -66,7 +66,7 @@ class DBCog(commands.Cog):
         print("{} Joined the server !".format(member.name))
         user = self.get_user(member.id)
         if not user:
-            self.add_user_to_db(member)
+            user = self.add_user_to_db(member)
             print("Added {} to the Database".format(member.name))
             await user.add_roles(self.client.RankRoles['Player'])
         else:
