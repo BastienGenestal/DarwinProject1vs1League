@@ -12,6 +12,7 @@ def get_rank(client, player):
             return client.RankRoles[role]
 
 def get_new_rank(player_elo):
+    print(type(rolesValues), rolesValues)
     for rank, elo in rolesValues.sort(key=lambda x:x[1]):
         print(player_elo, elo, rank)
         if player_elo <= elo:
