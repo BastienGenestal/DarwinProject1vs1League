@@ -30,13 +30,13 @@ RankRoles = {
 }
 
 rolesValues = [
-    ("Godlike", 1500),
-    ("Master", 750),
-    ("Pro", 600),
-    ("Expert", 550),
-    ("Player", 500),
+    ("Medkit", 100),
     ("Newbie", 250),
-    ("Medkit", 100)
+    ("Player", 500),
+    ("Expert", 550),
+    ("Pro", 600),
+    ("Master", 750),
+    ("Godlike", 1500),
 ]
 
 BracketRoles = {
