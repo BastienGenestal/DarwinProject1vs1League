@@ -12,9 +12,9 @@ def get_rank(client, player):
             return client.RankRoles[role]
 
 def get_new_rank(player_elo):
-    for rank, elo in rolesValues:
+    for rank, elo in rolesValues.sort(key=lambda x:x[1]):
         print(player_elo, elo, rank)
-        if player_elo >= elo:
+        if player_elo <= elo:
             return rank
 
 async def set_rank(client, player, player_elo_str):
