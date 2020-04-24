@@ -20,20 +20,20 @@ UsefulRoles = {
 }
 
 RankRoles = {
-    ("Godlike", "Godlike", 5000),
-    ("Master", "Master", 2500),
-    ("Pro", "Pro", 1500),
-    ("Expert", "Expert", 1000),
+    ("Godlike", "Godlike", 1500),
+    ("Master", "Master", 750),
+    ("Pro", "Pro", 600),
+    ("Expert", "Expert", 550),
     ("Player", "Player", 500),
-    ("Newbie", "Newbie", 100),
+    ("Newbie", "Newbie", 250),
     ("Medkit", "Medkit", 0)
 }
 
 rolesValues = {
-    ("Godlike", 5000),
-    ("Master", 2500),
-    ("Pro", 1500),
-    ("Expert", 1000),
+    ("Godlike", 1500),
+    ("Master", 750),
+    ("Pro", 600),
+    ("Expert", 550),
     ("Player", 500),
     ("Newbie", 250),
     ("Medkit", 0)
