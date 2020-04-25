@@ -10,7 +10,13 @@ UsefulChannelNames = {
     ("1", "room-1"),
     ("2", "room-2"),
     ("3", "room-3"),
-    ("4", "room-4")
+    ("4", "room-4"),
+    ("5", "room-5"),
+    ("6", "room-6"),
+    ("7", "room-7"),
+    ("8", "room-8"),
+    ("9", "room-9"),
+    ("10", "room-10")
 }
 
 ### Roles names
@@ -43,7 +49,13 @@ BracketRoles = {
     ("1", "Room 1"),
     ("2", "Room 2"),
     ("3", "Room 3"),
-    ("4", "Room 4")
+    ("4", "Room 4"),
+    ("5", "Room 5"),
+    ("6", "Room 6"),
+    ("7", "Room 7"),
+    ("8", "Room 8"),
+    ("9", "Room 9"),
+    ("10", "Room 10")
 }
 
 ### Emotes
