@@ -12,5 +12,5 @@ DUEL_RESULTS_MSG = "After your 3 games, comeback here to tell me if you won.\n" 
 CONFLICT_MSG = "There is a conflict, please be honest or contact a mod.\n"
 CLAIM_VICTORY_MSG = "{} claims victory. {} admit being defeated or contact a mod.\n" \
                     "If there is no conflict in 1 minute, I will consider that {} lost."
-CHALLENGE_YOURSELF_MESSAGE = "You can't yourself.\n I mean you can, by doing sport maybe ? Fat ass."
+CHALLENGE_YOURSELF_MESSAGE = "You can't challenge yourself.\n I mean you can, by doing sport maybe ? Fat ass."
 CHALLENGE_SAME_PLAYER_MESSAGE = "You are already challenging this player."
