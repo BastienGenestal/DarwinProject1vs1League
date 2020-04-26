@@ -112,7 +112,6 @@ class Room:
         elif winner == 'd':
             new_elo_A, new_elo_D = elo_brain.calculate(0)
         else:
-            print('no elo update')
             return
         await self.print_new_elos(attacker['elo'], new_elo_A, defender['elo'], new_elo_D)
         await self.update_elos(new_elo_A, new_elo_D)

@@ -5,6 +5,7 @@ ServerId = realServerId
 ### Text-channels names
 
 UsefulChannelNames = {
+    ("db", "db-update"),
     ("chal", "challenge-zone"),
     ("feed", "feed"),
     ("1", "room-1"),

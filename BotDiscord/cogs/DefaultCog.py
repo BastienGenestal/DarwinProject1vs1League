@@ -10,7 +10,7 @@ class DefaultCog(commands.Cog):
     async def on_ready(self):
         game = discord.Activity(name="Humans fight", type=discord.ActivityType.watching)
         await self.client.change_presence(status=discord.Status.dnd, activity=game)
-        print('Bot Ready')
+        print('Bot Ready', flush=True)
 
     @commands.command()
     async def ping(self, ctx):

@@ -19,7 +19,7 @@ class DBCog(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         try:
-            self.db = self.connect_to_db()
+            self.client.db = self.connect_to_db()
             print("Database connected")
             self.add_all_user_to_db()
         except Exception as e:
@@ -27,17 +27,17 @@ class DBCog(commands.Cog):
 
     def update_elo(self, user_id, new_elo):
         try:
-            with self.db.cursor() as cursor:
+            with self.client.db.cursor() as cursor:
                 sql = "UPDATE `players` SET `elo` = %s WHERE `user_id`=%s"
                 cursor.execute(sql, (new_elo, user_id))
-                self.db.commit()
+                self.client.db.commit()
         except Exception as e:
             print("Error Updating user elo:", e)
         return None
 
     def get_user(self, user_id):
         try:
-            with self.db.cursor() as cursor:
+            with self.client.db.cursor() as cursor:
                 sql = "SELECT `*` FROM `players` WHERE `user_id`=%s"
                 cursor.execute(sql, (user_id,))
                 result = cursor.fetchone()
@@ -51,11 +51,11 @@ class DBCog(commands.Cog):
 
     def add_user_to_db(self, member):
         try:
-            with self.db.cursor() as cursor:
+            with self.client.db.cursor() as cursor:
                 sql = "INSERT INTO `players` (`user_id`, `user_name`, `first_seen`, `avatar_url`, `elo`)" +\
                     " VALUES (%s, %s, %s, %s, %s)"
                 cursor.execute(sql, (member.id, member.name, member.joined_at, str(member.avatar_url), INIT_ELO))
-            self.db.commit()
+            self.client.db.commit()
             print("Added user: ", member.name)
             return self.get_user(member.id)
         except Exception as e:

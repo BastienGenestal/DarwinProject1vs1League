@@ -23,8 +23,6 @@ class DarwinBot(commands.Bot):
 
         # Non - constant variable initialization
 
-        self.get_on_msg = get_on_msg
-
         # Loading the server, channels, roles...
         for filename in os.listdir('./init'):
             if filename.endswith('.py'):
