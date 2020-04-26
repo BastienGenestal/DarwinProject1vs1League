@@ -13,7 +13,7 @@ class ChallengeCog(commands.Cog):
         platforms = ''
         possible_platform_roles = ['PC', 'Xbox', 'PS4']
         for role in author.roles:
-            if role in possible_platform_roles:
+            if role.name in possible_platform_roles:
                 platforms += role + '\t'
         if not platforms:
             return ''
@@ -23,7 +23,7 @@ class ChallengeCog(commands.Cog):
         region = ''
         possible_region_roles = ['EU', 'NA-West', 'NA-East', "AP(Sydney)", "AP(Singapore)", "SA"]
         for role in author.roles:
-            if role in possible_region_roles:
+            if role.name in possible_region_roles:
                 region += role + '\t'
         if not region:
             return ''
