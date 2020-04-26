@@ -66,7 +66,7 @@ UsefulBasicEmotes = {
     ("lose", "🟥"),
     ("win", "🎖️"),
     ("yes", "✅"),
-    ("no", "❎")
+    ("no", "❌")
 }
 
 ### Cogs

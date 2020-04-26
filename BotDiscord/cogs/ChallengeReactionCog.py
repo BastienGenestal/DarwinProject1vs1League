@@ -33,7 +33,6 @@ class ChallengeReaction(commands.Cog):
     async def on_reaction_add(self, react, user):
         if not self.is_it_a_request_msg(react, user):
             return
-        # check if the reacter isn't already in a room
         request = self.get_valid_request(react, user)
         if not request:
             return
@@ -41,6 +40,9 @@ class ChallengeReaction(commands.Cog):
             new_room = Room(request['req'].message, request['req'].attacker, request['req'].defender, self.client)
             await new_room.create()
             self.client.Rooms.append(new_room)
+            self.client.DuelRequests.remove(request)
+        elif react.emoji == self.client.usefulBasicEmotes['no']:
+            await request['req'].message.delete()
             self.client.DuelRequests.remove(request)
 
 def setup(client):
