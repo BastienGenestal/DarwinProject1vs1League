@@ -70,7 +70,7 @@ class AdminDBCog(commands.Cog):
             return True
         except Exception as e:
             await ctx.channel.send(e)
-            print(e)
+            await self.client.log(e)
         return False
 
 def setup(client):

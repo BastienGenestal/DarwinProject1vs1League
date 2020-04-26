@@ -8,6 +8,7 @@ UsefulChannelNames = {
     ("db", "db-update"),
     ("chal", "challenge-zone"),
     ("feed", "feed"),
+    ("logs", "bot-logs"),
     ("1", "room-1"),
     ("2", "room-2"),
     ("3", "room-3"),

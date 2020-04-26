@@ -18,7 +18,7 @@ class Utils(commands.Cog):
         try:
             await ctx.channel.purge(limit=100)
         except Exception as e:
-            print(e)
+            await self.client.log(e)
 
 
 def setup(client):

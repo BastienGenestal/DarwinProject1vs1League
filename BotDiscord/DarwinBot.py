@@ -36,6 +36,12 @@ class DarwinBot(commands.Bot):
         for (var, cog) in UsefulCogs:
             self.usefulCogs[var] = self.get_cog(cog)
 
+    async def log(self, *args):
+        msg = ' '.join([str(x) for x in args])
+        if self.usefulChannels['logs']:
+            await self.usefulChannels['logs'].send("```{}```".format(msg))
+        print(msg, flush=True)
+
     class MissingSomething(Exception):
         def __init__(self, *args):
             if args:

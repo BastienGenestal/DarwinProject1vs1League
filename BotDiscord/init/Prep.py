@@ -64,8 +64,8 @@ class Prep(commands.Cog):
             await self.init_custom_emotes()
             await self.init_basic_emotes()
         except self.client.MissingSomething as e:
-            print(e)
-            print("The bot will shut down, please check the discord server for whatever is missing.")
+            await self.client.log(e)
+            await self.client.log("The bot will shut down, please check the discord server for whatever is missing.")
             exit(84)
 
 

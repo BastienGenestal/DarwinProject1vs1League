@@ -57,11 +57,11 @@ class Room:
             winner = 'a'
         elif self.result_reactions['a'] == 1:
             msg = CLAIM_VICTORY_MSG.format(self.attacker.name, self.defender.name, self.defender.mention)
-            print("{} claims victory at {}".format(self.attacker.name, datetime.now()))
+            await self.client.log("{} claims victory at {}".format(self.attacker.name, datetime.now()))
             self.task = self.client.loop.create_task(self.call_this_in(self.claim_was_right, 'a', 60))
         elif self.result_reactions['d'] == 1:
             msg = CLAIM_VICTORY_MSG.format(self.defender.name, self.attacker.name, self.attacker.mention)
-            print("{} claims victory at {}".format(self.defender.name, datetime.now()))
+            await self.client.log("{} claims victory at {}".format(self.defender.name, datetime.now()))
             self.task = self.client.loop.create_task(self.call_this_in(self.claim_was_right, 'd', 60))
         await self.channel.send(msg)
         return winner
@@ -80,9 +80,9 @@ class Room:
             await self.end_the_set(winner)
 
     async def update_elos(self, new_elo_A, new_elo_D):
-        self.client.usefulCogs['DB'].update_elo(self.attacker.id, new_elo_A)
+        await self.client.usefulCogs['DB'].update_elo(self.attacker.id, new_elo_A)
         await set_rank(self.client, self.attacker, new_elo_A)
-        self.client.usefulCogs['DB'].update_elo(self.defender.id, new_elo_D)
+        await self.client.usefulCogs['DB'].update_elo(self.defender.id, new_elo_D)
         await set_rank(self.client, self.defender, new_elo_D)
 
     @staticmethod
@@ -104,8 +104,8 @@ class Room:
         await self.channel.send(embed=e)
 
     async def calculate_elos(self, winner):
-        attacker = self.client.usefulCogs['DB'].get_user(self.attacker.id)
-        defender = self.client.usefulCogs['DB'].get_user(self.defender.id)
+        attacker = await self.client.usefulCogs['DB'].get_user(self.attacker.id)
+        defender = await self.client.usefulCogs['DB'].get_user(self.defender.id)
         elo_brain = EloCalculation(attacker['elo'], defender['elo'])
         if winner == 'a':
             new_elo_A, new_elo_D = elo_brain.calculate(1)
@@ -162,14 +162,14 @@ class Room:
     async def init_bracket(self):
         roomId, self.bracket = self.get_free_bracket()
         if not self.bracket:
-            print('No free bracket to play {} vs {}', self.attacker, self.defender)
+            await self.client.log('No free bracket to play {} vs {}'.format(self.attacker, self.defender))
             return
         self.channel = self.client.usefulChannels[roomId]
         try:
             await self.attacker.add_roles(self.bracket)
             await self.defender.add_roles(self.bracket)
         except Exception as e:
-            print("Can't give {} role to {} or {}. {}".format(
+            await self.client.log("Can't give {} role to {} or {}. {}".format(
                 self.bracket.name, self.attacker, self.defender, e)
             )
 
