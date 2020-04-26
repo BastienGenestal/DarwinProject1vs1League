@@ -42,7 +42,7 @@ class DBCog(commands.Cog):
                 cursor.execute(sql, (user_id,))
                 result = cursor.fetchone()
                 if not result:
-                    print("User does not exist: %s" % user_id)
+                    return None
                 else:
                     return result
         except Exception as e:
@@ -63,11 +63,9 @@ class DBCog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        print("{} Joined the server !".format(member.name))
         user = self.get_user(member.id)
         if not user:
             self.add_user_to_db(member)
-            print("Added {} to the Database".format(member.name))
             await member.add_roles(self.client.RankRoles['Player'])
         else:
             await set_rank(self.client, member, user['elo'])

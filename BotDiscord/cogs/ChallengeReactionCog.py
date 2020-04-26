@@ -36,7 +36,6 @@ class ChallengeReaction(commands.Cog):
         # check if the reacter isn't already in a room
         request = self.get_valid_request(react, user)
         if not request:
-            print('NO VALID REQUEST FOUND')
             return
         if react.emoji == self.client.usefulBasicEmotes['yes']:
             new_room = Room(request['req'].message, request['req'].attacker, request['req'].defender, self.client)
