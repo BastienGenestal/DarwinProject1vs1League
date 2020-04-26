@@ -9,7 +9,7 @@ async def clear_rank(client, player):
 def get_rank(client, player):
     for role in client.RankRoles:
         if client.RankRoles[role] in player.roles:
-            return client.RankRoles[role]
+            return client.RankRoles[role].name
 
 
 def get_new_rank(player_elo):
@@ -24,6 +24,5 @@ async def set_rank(client, player, player_elo_str):
     current_rank = get_rank(client, player)
     if current_rank == new_rank:
         return
-    print(current_rank, new_rank, "are different")
     await clear_rank(client, player)
     await player.add_roles(client.RankRoles[new_rank])
