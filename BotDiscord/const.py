@@ -21,9 +21,7 @@ UsefulChannelNames = {
 
 ### Roles names
 
-UsefulRoles = {
-    ("on", "Online")
-}
+UsefulRoles = {}
 
 RankRoles = {
     ("Godlike", "Godlike", 1500),
@@ -77,9 +75,6 @@ UsefulCogs = {
 
 ### Const IDs
 
-get_on_msg = 702629934409187329
-
 ### Other values
 
 INIT_ELO = 500
-MINUTES_TO_END_SET = 90
