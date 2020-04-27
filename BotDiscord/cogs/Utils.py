@@ -12,6 +12,14 @@ class Utils(commands.Cog):
             return
         raise error
 
+    @commands.Cog.listener()
+    async def on_disconnect(self):
+        await self.client.log("Disconnected")
+
+    @commands.Cog.listener()
+    async def on_connected(self):
+        await self.client.log("Connected")
+
     @commands.command()
     @has_permissions(administrator=True, manage_messages=True)
     async def clear(self, ctx):

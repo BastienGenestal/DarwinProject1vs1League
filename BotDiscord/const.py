@@ -6,7 +6,7 @@ ServerId = realServerId
 
 UsefulChannelNames = {
     ("db", "db-update"),
-    ("chal", "challenge-zone"),
+    ("chal", "⚔-challenge-zone-⚔"),
     ("feed", "feed"),
     ("logs", "bot-logs"),
     ("1", "room-1"),

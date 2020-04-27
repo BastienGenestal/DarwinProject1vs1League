@@ -25,11 +25,6 @@ class DBCog(commands.Cog):
         except Exception as e:
             await self.client.log(e)
 
-    @commands.Cog.listener()
-    async def on_disconnect(self):
-        await self.client.log("TEST")
-        return
-
     async def update_elo(self, user_id, new_elo):
         try:
             with self.client.db.cursor() as cursor:
