@@ -94,4 +94,4 @@ UsefulCogs = {
 
 ### Other values
 
-INIT_ELO = 500
+INIT_ELO = 300
