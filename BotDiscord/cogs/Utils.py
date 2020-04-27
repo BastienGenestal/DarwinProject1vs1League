@@ -35,6 +35,13 @@ class Utils(commands.Cog):
                 await self.client.usefulCogs['DB'].set_region_platform("platform", member.id, role)
 
     @commands.command()
+    @has_permissions(administrator=True)
+    async def reset_ranks(self, ctx):
+        for member in self.client.server.members:
+            await member.remove_roles(self.client.RankRoles)
+            member.add_roles(self.client.RankRoles['Newbie'])
+
+    @commands.command()
     @has_permissions(administrator=True, manage_messages=True)
     async def clear(self, ctx):
         try:
