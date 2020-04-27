@@ -25,14 +25,49 @@ class DBCog(commands.Cog):
         except Exception as e:
             await self.client.log(e)
 
-    async def update_elo(self, user_id, new_elo):
+    async def remove_region_platform(self, region_or_platform, user_id, value):
         try:
             with self.client.db.cursor() as cursor:
-                sql = "UPDATE `players` SET `elo` = %s WHERE `user_id`=%s"
+                sql = "SELECT %s FROM `players` WHERE `user_id`=%s"
+                cursor.execute(sql, (region_or_platform, user_id))
+                result = cursor.fetchone()
+                if result[region_or_platform] != value:
+                    return
+                sql = "UPDATE `players` SET %s='' WHERE `user_id`=%s"
+                cursor.execute(sql, (region_or_platform, user_id))
+                self.client.db.commit()
+        except Exception as e:
+            await self.client.log("Error removing user {}:".format(region_or_platform), e)
+        return
+
+    async def set_region_platform(self, region_or_platform, user_id, value):
+        try:
+            with self.client.db.cursor() as cursor:
+                sql = "UPDATE `players` SET `{}`='{}' WHERE `user_id`=%s".format(region_or_platform, value)
+                cursor.execute(sql, (user_id))
+                self.client.db.commit()
+        except Exception as e:
+            await self.client.log("Error setting user {}:".format(region_or_platform), e)
+        return
+
+    async def wins(self, user_id, new_elo):
+        try:
+            with self.client.db.cursor() as cursor:
+                sql = "UPDATE `players` SET `streak` = `streak` + 1, `victory` = `victory` + 1, `elo` = %s WHERE `user_id`=%s"
                 cursor.execute(sql, (new_elo, user_id))
                 self.client.db.commit()
         except Exception as e:
-            await self.client.log("Error Updating user elo:", e)
+            await self.client.log("Error Updating user wins:", e)
+        return
+
+    async def lose(self, user_id, new_elo):
+        try:
+            with self.client.db.cursor() as cursor:
+                sql = "UPDATE `players` SET `streak` = 0, `defeat` = `defeat` + 1, `elo` = %s WHERE `user_id`=%s"
+                cursor.execute(sql, (new_elo, user_id))
+                self.client.db.commit()
+        except Exception as e:
+            await self.client.log("Error Updating user lose:", e)
         return None
 
     async def get_user(self, user_id):
@@ -66,7 +101,7 @@ class DBCog(commands.Cog):
         user = await self.get_user(member.id)
         if not user:
             await self.add_user_to_db(member)
-            await member.add_roles(self.client.RankRoles['Player'])
+            await member.add_roles(self.client.RankRoles['Inmate'])
         else:
             await set_rank(self.client, member, user['elo'])
 

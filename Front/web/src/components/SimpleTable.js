@@ -30,7 +30,6 @@ function filterCaseInsensitive(filter, allrow) {
     }
     if (filter.id === "ranking" && row.ranking.props) {
         row = row.ranking.props.children[1].props.children
-        console.log(row, filter)
         return (row.toString() === filter.value);
     }
     const id = filter.pivotId || filter.id;

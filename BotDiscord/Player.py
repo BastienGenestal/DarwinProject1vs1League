@@ -10,8 +10,11 @@ class Player:
         self.db_user = None
         self.new_elo = None
 
-    async def update_elo(self):
-        await self.client.usefulCogs['DB'].update_elo(self.user.id, self.new_elo)
+    async def update_elo(self, wins):
+        if wins:
+            await self.client.usefulCogs['DB'].wins(self.user.id, self.new_elo)
+        else:
+            await self.client.usefulCogs['DB'].lose(self.user.id, self.new_elo)
         await set_rank(self.client, self.user, self.new_elo)
 
     @staticmethod
@@ -36,6 +39,7 @@ class Player:
     async def calculate_elos(self, loser):
         elo_brain = EloCalculation(self.db_user['elo'], loser.db_user['elo'])
         self.new_elo, loser.new_elo = elo_brain.calculate(1)
+        self.new_elo = self.new_elo + (self.db_user['streak'] + 1) * 2
 
     async def get_db_user(self):
         self.db_user = await self.client.usefulCogs['DB'].get_user(self.user.id)
@@ -53,5 +57,5 @@ class Player:
         await self.log_beats(loser)
         await self.calculate_elos(loser)
         await self.print_new_elos(loser, channel)
-        await self.update_elo()
-        await loser.update_elo()
+        await self.update_elo(True)
+        await loser.update_elo(False)

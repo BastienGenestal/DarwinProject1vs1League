@@ -27,6 +27,20 @@ class Prep(commands.Cog):
                 raise self.client.MissingSomething("{} role is missing".format(roleName))
             self.client.usefulRoles[var] = role
 
+    async def init_region_roles(self):
+        for (var, roleName) in RegionRoles:
+            role = discord.utils.get(self.client.server.roles, name=roleName)
+            if not role:
+                raise self.client.MissingSomething("{} role is missing".format(roleName))
+            self.client.RegionRoles[var] = role
+
+    async def init_platform_roles(self):
+        for (var, roleName) in PlatformRoles:
+            role = discord.utils.get(self.client.server.roles, name=roleName)
+            if not role:
+                raise self.client.MissingSomething("{} role is missing".format(roleName))
+            self.client.PlatformRoles[var] = role
+
     async def init_rank_roles(self):
         for (var, roleName, elo) in RankRoles:
             role = discord.utils.get(self.client.server.roles, name=roleName)
@@ -59,6 +73,8 @@ class Prep(commands.Cog):
             await self.init_server()
             await self.init_channels()
             await self.init_roles()
+            await self.init_region_roles()
+            await self.init_platform_roles()
             await self.init_rank_roles()
             await self.init_bracket_roles()
             await self.init_custom_emotes()

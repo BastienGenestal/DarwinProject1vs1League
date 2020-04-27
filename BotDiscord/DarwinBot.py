@@ -14,6 +14,8 @@ class DarwinBot(commands.Bot):
         self.usefulChannels = {}
         self.usefulRoles = {}
         self.RankRoles = {}
+        self.RegionRoles = {}
+        self.PlatformRoles = {}
         self.BracketRoles = {}
         self.usefulCustomEmotes = {}
         self.usefulBasicEmotes = {}

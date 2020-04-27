@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b526483bffa6440a922d9bfd8345c123",
+    "revision": "d3b1302f8193b0409cbcb5df6288d5d9",
     "url": "/index.html"
   },
   {
-    "revision": "fb61c2bc37e10b47b7c5",
+    "revision": "f483c8fe1ebce000952e",
     "url": "/static/css/2.b04c1703.chunk.css"
   },
   {
-    "revision": "8b3f4a0c0d0dddc01529",
-    "url": "/static/css/main.2b83ab44.chunk.css"
+    "revision": "afe40099143fa10b8e9f",
+    "url": "/static/css/main.26be4c92.chunk.css"
   },
   {
-    "revision": "fb61c2bc37e10b47b7c5",
-    "url": "/static/js/2.29cdda88.chunk.js"
+    "revision": "f483c8fe1ebce000952e",
+    "url": "/static/js/2.0a40ab30.chunk.js"
   },
   {
     "revision": "d2966845b94a3318bf32eecc7af8015d",
-    "url": "/static/js/2.29cdda88.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.0a40ab30.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8b3f4a0c0d0dddc01529",
-    "url": "/static/js/main.67233f18.chunk.js"
+    "revision": "afe40099143fa10b8e9f",
+    "url": "/static/js/main.51647bd5.chunk.js"
   },
   {
     "revision": "5f3d8f831774035ce95c",
@@ -38,6 +38,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "21db8214b7c655551d302be51d81e5cd",
     "url": "/static/media/3.21db8214.png"
+  },
+  {
+    "revision": "aec34a53f21712ccd844d1e8dd58c900",
+    "url": "/static/media/PC.aec34a53.png"
+  },
+  {
+    "revision": "ddcbf136c89ab6937a20d808bf37336e",
+    "url": "/static/media/Xbox.ddcbf136.png"
   },
   {
     "revision": "11911410dca2de148f30954eb2fd5eab",

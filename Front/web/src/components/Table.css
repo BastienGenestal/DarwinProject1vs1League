@@ -29,3 +29,17 @@
     width:50px;
     height:50px;
 }
+
+.elo-col {
+    display: inline-block;
+    font-size: 16px;
+    align-items: center;
+}
+
+.rank-badge {
+    font-size: 18px;
+    border-radius: 2px;
+    box-shadow: #282c34 2px 2px 2px 2px;
+    width: 90px;
+    color: white;
+}

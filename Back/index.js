@@ -3,8 +3,10 @@ const mysql = require('mysql');
 const cors = require('cors');
 const app = express();
 
+const VARIABLES_I_NEED = "user_name,avatar_url,platform,region,elo,victory,defeat,streak"
+
 const SELECT_ALL_PLAYERS =
-    "select @r:=@r+1 as ranking,user_id,user_name,avatar_url,region,first_seen,elo\n" +
+    `select @r:=@r+1 as ranking,${VARIABLES_I_NEED}\n` +
     "from players,(select @r:=0) as r order by elo desc\n";
 
 const connection = mysql.createConnection(

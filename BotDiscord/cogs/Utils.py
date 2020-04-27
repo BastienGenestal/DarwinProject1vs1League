@@ -21,6 +21,20 @@ class Utils(commands.Cog):
         await self.client.log("Connected")
 
     @commands.command()
+    @has_permissions(administrator=True)
+    async def update_region_in_db(self, ctx):
+        for role in self.client.RegionRoles:
+            for member in self.client.RegionRoles[role].members:
+                await self.client.usefulCogs['DB'].set_region_platform("region", member.id, role)
+
+    @commands.command()
+    @has_permissions(administrator=True)
+    async def update_platform_in_db(self, ctx):
+        for role in self.client.PlatformRoles:
+            for member in self.client.PlatformRoles[role].members:
+                await self.client.usefulCogs['DB'].set_region_platform("platform", member.id, role)
+
+    @commands.command()
     @has_permissions(administrator=True, manage_messages=True)
     async def clear(self, ctx):
         try:

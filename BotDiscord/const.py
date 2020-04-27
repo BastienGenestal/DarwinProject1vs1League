@@ -23,14 +23,29 @@ UsefulChannelNames = {
 
 ### Roles names
 
-UsefulRoles = {}
+UsefulRoles = []
+
+RegionRoles = {
+        ('EU', 'EU'),
+        ('NA-West', 'NA-West'),
+        ('NA-East', 'NA-East'),
+        ('AP(Sydney)', 'AP(Sydney)'),
+        ('AP(Singapore)', 'AP(Singapore)'),
+        ('SA', 'SA')
+}
+
+PlatformRoles = {
+        ('PC', 'PC'),
+        ('Xbox', 'Xbox'),
+        ('PS4', 'PS4')
+}
 
 RankRoles = {
     ("Godlike", "Godlike", 1500),
     ("Master", "Master", 750),
     ("Pro", "Pro", 600),
     ("Expert", "Expert", 550),
-    ("Player", "Player", 500),
+    ("Inmate", "Inmate", 400),
     ("Newbie", "Newbie", 250),
     ("Medkit", "Medkit", 100)
 }
@@ -40,7 +55,7 @@ rolesValues = [
     ("Master", 750),
     ("Pro", 600),
     ("Expert", 550),
-    ("Player", 500),
+    ("Inmate", 400),
     ("Newbie", 250),
     ("Medkit", 100)
 ]
