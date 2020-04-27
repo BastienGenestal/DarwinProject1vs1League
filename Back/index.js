@@ -13,7 +13,7 @@ const connection = mysql.createConnection(
     {
         host: 'localhost',
         user: 'root',
-        password: 'idfrgenestl',
+        password: process.env.DBPASS,
         database: 'darwin1v1league'
     }
 );
