@@ -1,5 +1,11 @@
+from datetime import datetime
+
+import discord
 from discord.ext import commands
 from Room import Room
+from Request import Request
+
+from const_messages import CHALL_ME_TITLE
 
 
 class ChallengeReaction(commands.Cog):
@@ -24,10 +30,27 @@ class ChallengeReaction(commands.Cog):
         return True
 
     def get_valid_request(self, react, user):
+        ## Checking if it is a 'duel request' message
         for req in self.client.DuelRequests:
             if self.is_it_this_request(req, react.message, user):
                 return req
+        ## Now checking if it is a 'challenge me' message
+        if react.emoji != self.client.usefulBasicEmotes['yes']:
+            return None
+        if react.message.embeds and react.message.embeds[0].title == CHALL_ME_TITLE:
+            author = discord.utils.get(self.client.server.members, discriminator=react.message.embeds[0].author.name[-4:])
+            if author.id == user.id:
+                return
+            if not author:
+                return None
+            req = Request(react.message, author, user)
+            return {'req': req, 'time': datetime.now()}
         return None
+
+    async def create_room(self, msg, attacker, defender):
+        new_room = Room(msg, attacker, defender, self.client)
+        await new_room.create()
+        self.client.Rooms.append(new_room)
 
     @commands.Cog.listener()
     async def on_reaction_add(self, react, user):
@@ -37,10 +60,9 @@ class ChallengeReaction(commands.Cog):
         if not request:
             return
         if react.emoji == self.client.usefulBasicEmotes['yes']:
-            new_room = Room(request['req'].message, request['req'].attacker, request['req'].defender, self.client)
-            await new_room.create()
-            self.client.Rooms.append(new_room)
-            self.client.DuelRequests.remove(request)
+            await self.create_room(request['req'].message, request['req'].attacker, request['req'].defender)
+            if request in self.client.DuelRequests:
+                self.client.DuelRequests.remove(request)
         elif react.emoji == self.client.usefulBasicEmotes['no']:
             await request['req'].message.delete()
             self.client.DuelRequests.remove(request)

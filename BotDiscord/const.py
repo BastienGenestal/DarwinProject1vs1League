@@ -45,7 +45,7 @@ RankRoles = {
     ("Master", "Master", 750),
     ("Pro", "Pro", 600),
     ("Expert", "Expert", 550),
-    ("Inmate", "Inmate", 400),
+    ("Inmate", "Inmate", 350),
     ("Newbie", "Newbie", 250),
     ("Medkit", "Medkit", 100)
 }
@@ -55,7 +55,7 @@ rolesValues = [
     ("Master", 750),
     ("Pro", 600),
     ("Expert", 550),
-    ("Inmate", 400),
+    ("Inmate", 350),
     ("Newbie", 250),
     ("Medkit", 100)
 ]

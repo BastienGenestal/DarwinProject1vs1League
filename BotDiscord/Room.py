@@ -119,8 +119,9 @@ class Room:
         await self.channel.send("{} vs {}".format(self.attacker.mention, self.defender.mention), embed=e)
 
     async def delete_request_msg(self):
-        await self.duelRequestMsg.delete()
-        self.duelRequestMsg = None
+        if self.duelRequestMsg:
+            await self.duelRequestMsg.delete()
+            self.duelRequestMsg = None
 
     async def init_bracket(self):
         room_id, self.bracket = self.get_free_bracket()

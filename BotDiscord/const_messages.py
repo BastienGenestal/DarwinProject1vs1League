@@ -1,8 +1,13 @@
 CONTENT_ON_MESSAGE = "React here to be open to duel resquest.\n" \
                      "You can always unreact."
 DUEL_REQUEST_MSG = "{} challenged {}\n" \
-                   "{} React to accept\n" \
-                   "you have 2 minutes."
+                   "{} React to accept"
+DUEL_ME_REQUEST_MSG = "{} wants to duel !\n" \
+                   "React to take the fight"
+CHALL_ME_TITLE = "CHALLENGER APPROACHING"
+CHALL_TITLE = "DUEL REQUEST"
+DELETED_IN = "you have {} minutes."
+TAKE_A_BREATH = "Take a breath !\nYou are already challenging !"
 START_DUEL_TITLE = "{} VS {} Best of 3"
 START_GAME_TITLE = "{} VS {}"
 START_DUEL_MSG = "{}, please open a PRIVATE and GEARED UP lobby and send the code here.\n" \

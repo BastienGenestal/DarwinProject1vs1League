@@ -87,7 +87,7 @@ class LeaderBoardTable extends React.Component {
             ["Master", 750, "rgba(255, 125, 0, 0.95)"],
             ["Pro", 600, "rgba(181, 102, 241, 0.65)"],
             ["Expert", 550, "rgba(81, 165, 248, 0.65)"],
-            ["Inmate", 400, "rgba(62, 238, 80, 0.65)"],
+            ["Inmate", 350, "rgba(62, 238, 80, 0.65)"],
             ["Newbie", 250, "rgba(255, 255, 255, 0.5)"],
             ["Medkit", 100, "rgba(80, 80, 80, 0.65)"]
         ]
