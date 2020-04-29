@@ -112,13 +112,18 @@ class LeaderBoardTable extends React.Component {
         if (LeaderboardIsLoading) return loaders[Math.floor(Math.random() * loaders.length)]
         if (Leaderboard === -1)
             return <div>Seems like server is dead lul</div>
+        if (!Leaderboard || !Leaderboard.length)
+            return <div>Empty</div>
+        const FilteredLeaderboard = Leaderboard.filter(player => player.played > 0)
+        if (!FilteredLeaderboard || !FilteredLeaderboard.length)
+            return <div>No one played yet</div>
         return (
             <MDBRow style={{width: '100%'}}>
                 <MDBCol>
                     <SimpleTable
                         name="leaderboard_table"
                         filterable
-                        data={Leaderboard.filter(player => player.played > 0)}
+                        data={FilteredLeaderboard}
                         columns=
                             {[
                                 {Header: "id", accessor: "id", show: false},
