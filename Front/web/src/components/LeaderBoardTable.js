@@ -118,7 +118,7 @@ class LeaderBoardTable extends React.Component {
                     <SimpleTable
                         name="leaderboard_table"
                         filterable
-                        data={Leaderboard}
+                        data={Leaderboard.filter(player => player.played > 0)}
                         columns=
                             {[
                                 {Header: "id", accessor: "id", show: false},
