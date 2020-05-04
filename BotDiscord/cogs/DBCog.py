@@ -25,6 +25,26 @@ class DBCog(commands.Cog):
         except Exception as e:
             await self.client.log(e)
 
+    @commands.Cog.listener()
+    async def on_connect(self):
+        if self.client.db or not self.client.is_ready():
+            return
+        try:
+            self.client.db = self.connect_to_db()
+            await self.client.log("Database connected")
+            await self.add_all_user_to_db()
+        except Exception as e:
+            await self.client.log(e)
+
+    @commands.Cog.listener()
+    async def on_disconnect(self):
+        try:
+            if self.client.db:
+                self.client.db.close()
+                self.client.db = None
+        except Exception as e:
+            await self.client.log(e)
+
     async def remove_region_platform(self, region_or_platform, user_id, value):
         try:
             with self.client.db.cursor() as cursor:
