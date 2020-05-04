@@ -6,5 +6,4 @@ switch (window.location.port) {
     default:
         temp = "http://45.76.34.20:8080"
 }
-console.log("Server location: ", temp)
 export const API_END_POINT = temp
