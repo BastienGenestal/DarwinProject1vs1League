@@ -90,6 +90,16 @@ class DBCog(commands.Cog):
             await self.client.log("Error Updating user lose:", e)
         return None
 
+    async def update_player(self, user_id, avatar_url, user_name):
+        try:
+            with self.client.db.cursor() as cursor:
+                sql = "UPDATE `players` SET `avatar_url` = %s, `user_name` = %s WHERE `user_id`=%s"
+                cursor.execute(sql, (avatar_url, user_name, user_id))
+                self.client.db.commit()
+        except Exception as e:
+            await self.client.log("Error Updating user:", e)
+        return None
+
     async def get_user(self, user_id):
         try:
             with self.client.db.cursor() as cursor:
@@ -127,8 +137,12 @@ class DBCog(commands.Cog):
 
     async def add_all_user_to_db(self):
         for member in self.client.get_all_members():
-            if not member.bot and not await self.get_user(member.id):
-                await self.add_user_to_db(member)
+            if not member.bot:
+                user = await self.get_user(member.id)
+                if not user:
+                    await self.add_user_to_db(member)
+                else:
+                    await self.update_player(member.id, user['avatar_url'], user['user_name'])
 
 
 def setup(client):
