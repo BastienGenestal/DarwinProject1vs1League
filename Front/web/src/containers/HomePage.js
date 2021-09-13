@@ -1,30 +1,51 @@
-import React, { Component } from 'react';
-import bgPic from "../data/image/backgroundImage.jpg";
-import discord from "../data/image/logos/JPG/discord.png";
-import { MDBMask, MDBView, MDBBtn } from 'mdbreact';
+import React, { Component } from "react";
+import bgPic from "../data/image/backgroundImage.png";
+import bgVid from "../data/image/Cinecut2.mp4";
+import { MDBMask, MDBView } from "mdbreact";
 import Header from "../components/Header/Header";
+import "./HomePage.css";
+import { FaDiscord } from "react-icons/fa";
+import Countdown from "../components/Countdown";
 
-const discord_link = "https://discord.gg/axhYkm4"
+const discord_link = "https://discord.gg/DBxYx7PwkS";
 
 class HomePage extends Component {
-
-    render() {
-
+  render() {
     return (
-        <div>
-            <Header />
-          <MDBView src={bgPic}>
-              <MDBMask overlay="black-light" className="flex-center flex-column text-white text-center">
-                  <h2 className="intro-text">Get into Darwin Duel League</h2>
-                  <MDBBtn outline color="light-blue" href={discord_link} target="_blank" size="lg" style={{display:'flex', padding: 0}}>
-                      <div className="discordButtonContent">
-                          <img alt="discord" src={discord} width='50px'/>
-                          <div style={{display: "table-cell", paddingLeft: "5px", margin: "auto", verticalAlign: 'middle'}} >Join Discord</div>
-                      </div>
-                  </MDBBtn>
-              </MDBMask>
-          </MDBView>
-        </div>
+      <div>
+        <Header />
+        <MDBView>
+          <div className="main">
+            <video
+              className="video-intro"
+              playsInline
+              autoPlay
+              muted
+              loop
+              poster={bgPic}
+            >
+              <source src={bgVid} type="video/mp4" />
+            </video>
+            <MDBMask
+              overlay="black-light"
+              className="flex-center flex-column text-white text-center"
+            >
+              <div className="main-title">
+                <h1 className="intro-text">Darwin 1v1 League</h1>
+                <h2 className="sub-text">All platforms, All regions</h2>
+                <a
+                  className="discord-btn"
+                  href={discord_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaDiscord />
+                </a>
+              </div>
+            </MDBMask>
+          </div>
+        </MDBView>
+      </div>
     );
   }
 }

@@ -12,6 +12,8 @@ class DarwinBot(commands.Bot):
         # Initializing constants
         self.server = None
         self.usefulChannels = {}
+        self.challRooms = {}
+        self.cmdChannels = {}
         self.usefulRoles = {}
         self.RankRoles = {}
         self.RegionRoles = {}
@@ -20,8 +22,12 @@ class DarwinBot(commands.Bot):
         self.usefulCustomEmotes = {}
         self.usefulBasicEmotes = {}
         self.usefulCogs = {}
+        self.supporterRoles = {}
+        self.platformColours = {}
+        self.platformImages = {}
         self.DuelRequests = []
         self.Rooms = []
+        self.Active = []
 
         # Non - constant variable initialization
 

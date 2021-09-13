@@ -1,12 +1,18 @@
 .profile_col {
-    text-align: left;
-    display: table-cell;
-    height: 100%;
-    margin: auto;
-    font-weight: 600;
-    padding-left: 100px;
+	display: flex;
+	align-items: center;
+	align-content: center;
+	height: 100%;
+	margin: auto;
+	font-weight: 600;
+	padding-left: 12%;
 }
-
+.profile_col > a{
+    color: white;   
+}
+.profile_col > a:hover{
+    color: rgba(255, 255, 255, 0.527);
+}
 .container_medal {
     position: relative;
     text-align: center;
