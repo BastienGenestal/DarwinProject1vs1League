@@ -20,6 +20,20 @@ class Prep(commands.Cog):
                 raise self.client.MissingSomething("{} channel is missing".format(chanName))
             self.client.usefulChannels[var] = channel
 
+    async def init_challRooms(self):
+        for (var, chanName) in ChallengeRooms:
+            channel = discord.utils.get(self.client.server.channels, name=chanName)
+            if not channel:
+                raise self.client.MissingSomething("{} channel is missing".format(chanName))
+            self.client.challRooms[var] = channel
+
+    async def init_cmdChannels(self):
+        for (var, chanName) in CommandsChannels:
+            channel = discord.utils.get(self.client.server.channels, name=chanName)
+            if not channel:
+                raise self.client.MissingSomething("{} channel is missing".format(chanName))
+            self.client.cmdChannels[var] = channel
+
     async def init_roles(self):
         for (var, roleName) in UsefulRoles:
             role = discord.utils.get(self.client.server.roles, name=roleName)
@@ -66,12 +80,22 @@ class Prep(commands.Cog):
         for (var, emote) in UsefulBasicEmotes:
             self.client.usefulBasicEmotes[var] = emote
 
+    async def init_platform_images(self):
+        for (var, image) in PlatformImages:
+            self.client.platformImages[var] = image
+
+    async def init_platform_colours(self):
+        for (var, colour) in PlatformColours:
+            self.client.platformColours[var] = colour
+
 
     @commands.Cog.listener()
     async def on_ready(self):
         try:
             await self.init_server()
             await self.init_channels()
+            await self.init_challRooms()
+            await self.init_cmdChannels()
             await self.init_roles()
             await self.init_region_roles()
             await self.init_platform_roles()
@@ -79,6 +103,8 @@ class Prep(commands.Cog):
             await self.init_bracket_roles()
             await self.init_custom_emotes()
             await self.init_basic_emotes()
+            await self.init_platform_images()
+            await self.init_platform_colours()
         except self.client.MissingSomething as e:
             await self.client.log(e)
             await self.client.log("The bot will shut down, please check the discord server for whatever is missing.")

@@ -1,1 +1,8 @@
 .idea/
+*__pycache__/
+botToken
+nohup.out
+dumps/
+dbPass
+tokens.py
+screenlog.0
