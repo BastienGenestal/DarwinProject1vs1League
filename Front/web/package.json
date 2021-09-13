@@ -1,20 +1,22 @@
 {
-  "name": "DarwinProject1vs1League",
+  "name": "DarwinProject1v1League",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
     "history": "^4.10.1",
-    "mdbreact": "^4.25.6",
+    "mdbreact": "^4.27.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-icons": "^4.1.0",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.3.0",
+    "react-scripts": "^4.0.3",
     "react-table-v6": "^6.8.6",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "timezone-support": "^2.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

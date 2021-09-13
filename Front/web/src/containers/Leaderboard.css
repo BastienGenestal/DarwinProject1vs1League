@@ -1,5 +1,6 @@
-:root {
-    --background:  #343c4b;
+@font-face{
+    font-family:"Rift";
+        src: url("../data/Fonts/RiftSoft-BoldItalic.ttf") format("truetype");
 }
 
 .leaderboard-page {
@@ -10,11 +11,12 @@
 .leaderboard-title {
     margin: auto;
     height: 20px;
-    font-size: 35px;
+    font-family: Rift;
+    font-size: 50px;
     font-weight: 500;
     background: transparent;
     color: white;
-    padding: 1rem;
+    padding: 1rem, 0.5rem;
 }
 
 .leaderboard-container {
@@ -61,4 +63,7 @@
     color: white;
     font-weight: 500;
     font-size: 20px;
+}
+.nav-pills{
+    justify-content: center;
 }
